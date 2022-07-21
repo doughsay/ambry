@@ -120,6 +120,10 @@ defmodule AmbryWeb.Router do
     get "/bookmarks/:media_id", BookmarkController, :index
   end
 
+  scope "/gql" do
+    forward "/", Absinthe.Plug.GraphiQL, schema: AmbrySchema, interface: :playground
+  end
+
   # Enables the Swoosh mailbox preview in development.
   #
   # Note that preview only shows emails that were sent by the same
